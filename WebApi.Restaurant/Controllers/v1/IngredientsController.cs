@@ -82,8 +82,6 @@ namespace WebAPI.Restaurant.Controllers.v1
                 {
                     return BadRequest();
                 }
-
-
                 var data = mapper.Map<SaveIngredientDto>(dto);
                 await services.CreateAsync(data);
                 return NoContent();
@@ -98,6 +96,7 @@ namespace WebAPI.Restaurant.Controllers.v1
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SaveIngredientDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Put(int id, SaveIngredientDto dto)
         {
@@ -108,6 +107,12 @@ namespace WebAPI.Restaurant.Controllers.v1
                     return BadRequest();
                 }
 
+                var ingredient = await services.GetByIdSaveViewModelAsync(id);
+
+                if (ingredient == null)
+                {
+                    return NotFound();
+                }
                 await services.UpdateAsync(dto, id);
                 return Ok(dto);
             }
