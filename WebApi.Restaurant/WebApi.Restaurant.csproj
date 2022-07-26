@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Restaurant.Core.Application\Restaurant.Core.Application.csproj" />
+    <ProjectReference Include="..\Restaurant.Core.Domain\Restaurant.Core.Domain.csproj" />
+    <ProjectReference Include="..\Restaurant.Infrastructure.Identity\Restaurant.Infrastructure.Identity.csproj" />
+    <ProjectReference Include="..\Restaurant.Infrastructure.Persistence\Restaurant.Infrastructure.Persistence.csproj" />
+    <ProjectReference Include="..\Restaurant.Infrastructure.Shared\Restaurant.Infrastructure.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
