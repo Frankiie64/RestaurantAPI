@@ -41,7 +41,12 @@ namespace Restaurant.Infrastructure.Persistence
 
             //Other repos
             services.AddTransient<IIngredientRepository, IngredientRepository>();
-           
+            services.AddTransient<IDishRepository, DishRepository>();
+            services.AddTransient<IInfoDishRepository, InfoDishRepository>();
+            services.AddTransient<IOrderWithDishRepository, OrderWithDishRepository>();
+            services.AddTransient<ITableRepository, TableRepository>();
+            services.AddTransient<IRequestRepository, RequestRepository>();
+
             #endregion
 
         }

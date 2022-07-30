@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restaurant.Infrastructure.Persistence.Context;
 
 namespace Restaurant.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220728222149_UpdatesInTable")]
+    partial class UpdatesInTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,9 +116,6 @@ namespace Restaurant.Infrastructure.Persistence.Migrations
                     b.Property<double>("Subtotal")
                         .HasColumnType("float");
 
-                    b.Property<int>("stauts")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("IdTable");
@@ -134,9 +133,6 @@ namespace Restaurant.Infrastructure.Persistence.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Stauts")
-                        .HasColumnType("int");
 
                     b.Property<int>("TableOf")
                         .HasColumnType("int");

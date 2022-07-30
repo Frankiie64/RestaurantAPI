@@ -3,7 +3,6 @@ C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\Restaurant\WebApi.Restaura
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\Restaurant\WebApi.Restaurant\obj\Debug\net5.0\WebApi.Restaurant.AssemblyInfoInputs.cache
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\Restaurant\WebApi.Restaurant\obj\Debug\net5.0\WebApi.Restaurant.AssemblyInfo.cs
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\Restaurant\WebApi.Restaurant\obj\Debug\net5.0\WebApi.Restaurant.csproj.CoreCompileInputs.cache
-C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\Restaurant\WebApi.Restaurant\obj\Debug\net5.0\WebApi.Restaurant.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\Restaurant\WebApi.Restaurant\obj\Debug\net5.0\WebApi.Restaurant.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\Restaurant\WebApi.Restaurant\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\Restaurant\WebApi.Restaurant\bin\Debug\net5.0\appsettings.json
@@ -164,3 +163,4 @@ C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\Restaurant\WebApi.Restaura
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\Restaurant\WebApi.Restaurant\obj\Debug\net5.0\ref\WebApi.Restaurant.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\Restaurant\WebApi.Restaurant\obj\Debug\net5.0\WebApi.Restaurant.pdb
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\Restaurant\WebApi.Restaurant\obj\Debug\net5.0\WebApi.Restaurant.genruntimeconfig.cache
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\Restaurant\WebApi.Restaurant\obj\Debug\net5.0\WebApi.Restaurant.MvcApplicationPartsAssemblyInfo.cs

@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restaurant.Infrastructure.Persistence.Context;
 
 namespace Restaurant.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220727235612_ConfigureEntites")]
+    partial class ConfigureEntites
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,71 +83,6 @@ namespace Restaurant.Infrastructure.Persistence.Migrations
                     b.ToTable("Ingredients");
                 });
 
-            modelBuilder.Entity("Restaurant.Core.Domain.Entities.OrderWithDish", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("IdDish")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdOrder")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdOrder");
-
-                    b.ToTable("OrderWithDish");
-                });
-
-            modelBuilder.Entity("Restaurant.Core.Domain.Entities.Request", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("IdTable")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Subtotal")
-                        .HasColumnType("float");
-
-                    b.Property<int>("stauts")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdTable");
-
-                    b.ToTable("Request");
-                });
-
-            modelBuilder.Entity("Restaurant.Core.Domain.Entities.Table", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Stauts")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TableOf")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Table");
-                });
-
             modelBuilder.Entity("Restaurant.Core.Domain.Entities.InfoDish", b =>
                 {
                     b.HasOne("Restaurant.Core.Domain.Entities.Dish", "Dish")
@@ -165,28 +102,6 @@ namespace Restaurant.Infrastructure.Persistence.Migrations
                     b.Navigation("Ingredients");
                 });
 
-            modelBuilder.Entity("Restaurant.Core.Domain.Entities.OrderWithDish", b =>
-                {
-                    b.HasOne("Restaurant.Core.Domain.Entities.Request", "Order")
-                        .WithMany("Dishes")
-                        .HasForeignKey("IdOrder")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("Restaurant.Core.Domain.Entities.Request", b =>
-                {
-                    b.HasOne("Restaurant.Core.Domain.Entities.Table", "Table")
-                        .WithMany("Orders")
-                        .HasForeignKey("IdTable")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Table");
-                });
-
             modelBuilder.Entity("Restaurant.Core.Domain.Entities.Dish", b =>
                 {
                     b.Navigation("Ingredients");
@@ -195,16 +110,6 @@ namespace Restaurant.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("Restaurant.Core.Domain.Entities.Ingredients", b =>
                 {
                     b.Navigation("Dishes");
-                });
-
-            modelBuilder.Entity("Restaurant.Core.Domain.Entities.Request", b =>
-                {
-                    b.Navigation("Dishes");
-                });
-
-            modelBuilder.Entity("Restaurant.Core.Domain.Entities.Table", b =>
-                {
-                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

@@ -25,6 +25,10 @@ namespace Restaurant.Infrastructure.Persistence.Context
         public DbSet<Ingredients> Ingredients { get; set; }
         public DbSet<Dish> Dish { get; set; }
         public DbSet<InfoDish> InfoDish { get; set; }
+        public DbSet<Table> Table { get; set; }
+        public DbSet<OrderWithDish> OrderWithDish { get; set; }
+        public DbSet<Request> Requests { get; set; }
+
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {                      
@@ -76,6 +80,9 @@ namespace Restaurant.Infrastructure.Persistence.Context
             modelBuilder.Entity<Ingredients>().ToTable("Ingredients");
             modelBuilder.Entity<Dish>().ToTable("Dish");
             modelBuilder.Entity<InfoDish>().ToTable("InfoDish");
+            modelBuilder.Entity<Request>().ToTable("Request");
+            modelBuilder.Entity<OrderWithDish>().ToTable("OrderWithDish");
+            modelBuilder.Entity<Table>().ToTable("Table");
 
 
             #endregion
@@ -87,6 +94,10 @@ namespace Restaurant.Infrastructure.Persistence.Context
             modelBuilder.Entity<Ingredients>().HasKey(x => x.Id);
             modelBuilder.Entity<Dish>().HasKey(x => x.Id);
             modelBuilder.Entity<InfoDish>().HasKey(x => x.Id);
+            modelBuilder.Entity<Request>().HasKey(x => x.Id);
+            modelBuilder.Entity<OrderWithDish>().HasKey(x => x.Id);
+            modelBuilder.Entity<Table>().HasKey(x => x.Id);
+
 
             #endregion
 
@@ -102,7 +113,21 @@ namespace Restaurant.Infrastructure.Persistence.Context
              .HasMany<InfoDish>(x => x.Dishes)
              .WithOne(x => x.Ingredients)
              .HasForeignKey(x => x.IdIngredient)
-             .OnDelete(deleteBehavior: DeleteBehavior.Cascade);             
+             .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Request>()
+             .HasMany<OrderWithDish>(x => x.Dishes)
+             .WithOne(x => x.Order)
+             .HasForeignKey(x => x.IdOrder)
+             .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Table>()
+             .HasMany<Request>(x => x.Orders)
+             .WithOne(x => x.Table)
+             .HasForeignKey(x => x.IdTable)
+             .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
+
+           
 
             #endregion
 
@@ -137,6 +162,8 @@ namespace Restaurant.Infrastructure.Persistence.Context
              .Property(a => a.DishCategory)
              .IsRequired();
 
+        
+
             #endregion
 
             #region InfoDish
@@ -148,6 +175,42 @@ namespace Restaurant.Infrastructure.Persistence.Context
             modelBuilder.Entity<InfoDish>()
               .Property(a => a.IdIngredient)
               .IsRequired();
+
+            #endregion
+
+            #region Request
+
+            modelBuilder.Entity<OrderWithDish>()
+             .Property(a => a.IdDish)
+             .IsRequired();
+
+            modelBuilder.Entity<OrderWithDish>()
+            .Property(a => a.IdOrder)
+            .IsRequired();
+
+            #endregion
+
+            #region Request
+
+            modelBuilder.Entity<Request>()
+             .Property(a => a.IdTable)
+             .IsRequired();
+
+            modelBuilder.Entity<Request>()
+            .Property(a => a.Subtotal)
+            .IsRequired();
+
+            #endregion
+
+            #region Table
+
+            modelBuilder.Entity<Table>()
+             .Property(a => a.TableOf)
+             .IsRequired();
+
+            modelBuilder.Entity<Table>()
+            .Property(a => a.Description)
+            .IsRequired();
 
             #endregion
             #endregion

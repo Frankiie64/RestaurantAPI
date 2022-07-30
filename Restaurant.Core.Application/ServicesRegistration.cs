@@ -20,9 +20,17 @@ namespace Restaurant.Core.Application
 
             #endregion
             #region Services 
+
             services.AddTransient(typeof(IGenericServices<,,>), typeof(GenericServices<,,>));
+
             services.AddTransient<IIngredientServices, IngredientServices>();
-            services.AddTransient<IUserService, UserService>();           
+            services.AddTransient<IInfoDishServices, InfoDishServices>();
+            services.AddTransient<IDishServices, DishServices>();
+            services.AddTransient<IOrderWithDishServices, OrderWithRequestService>();
+            services.AddTransient<IRequestServices, RequestService>();
+            services.AddTransient<ITableService, TableService>();
+            services.AddTransient<IUserService, UserService>();       
+            
             #endregion
         }
     }
